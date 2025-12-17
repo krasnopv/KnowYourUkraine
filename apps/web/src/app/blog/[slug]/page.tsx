@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getBlogPost, getBlogPosts } from '@/lib/strapi';
 
+export const dynamic = 'force-dynamic';
+
 interface BlogPost {
   id: number;
   documentId: string;
