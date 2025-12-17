@@ -27,9 +27,7 @@ jobs:
             
             # Clone or update repo
             if [ ! -d "/opt/knowYourUkraineCms/.git" ]; then
-              sudo rm -rf /opt/knowYourUkraineCms
-              sudo mkdir -p /opt/knowYourUkraineCms
-              sudo chown $USER:$USER /opt/knowYourUkraineCms
+              rm -rf /opt/knowYourUkraineCms/*
               git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineCms
             fi
             cd /opt/knowYourUkraineCms
