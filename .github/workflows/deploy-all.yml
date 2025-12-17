@@ -21,7 +21,10 @@ jobs:
             echo "🚀 Full deployment starting..."
             
             # Setup CMS folder
-            if [ ! -d "/opt/knowYourUkraineCms" ]; then
+            if [ ! -d "/opt/knowYourUkraineCms/.git" ]; then
+              sudo rm -rf /opt/knowYourUkraineCms
+              sudo mkdir -p /opt/knowYourUkraineCms
+              sudo chown $USER:$USER /opt/knowYourUkraineCms
               git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineCms
             fi
             cd /opt/knowYourUkraineCms
@@ -57,7 +60,10 @@ jobs:
             echo "✅ CMS deployed on port 3202"
             
             # Setup Web folder
-            if [ ! -d "/opt/knowYourUkraineWeb" ]; then
+            if [ ! -d "/opt/knowYourUkraineWeb/.git" ]; then
+              sudo rm -rf /opt/knowYourUkraineWeb
+              sudo mkdir -p /opt/knowYourUkraineWeb
+              sudo chown $USER:$USER /opt/knowYourUkraineWeb
               git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineWeb
             fi
             cd /opt/knowYourUkraineWeb

@@ -28,7 +28,9 @@ jobs:
             
             # Clone or update repo
             if [ ! -d "/opt/knowYourUkraineWeb/.git" ]; then
-              rm -rf /opt/knowYourUkraineWeb
+              sudo rm -rf /opt/knowYourUkraineWeb
+              sudo mkdir -p /opt/knowYourUkraineWeb
+              sudo chown $USER:$USER /opt/knowYourUkraineWeb
               git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineWeb
             fi
             cd /opt/knowYourUkraineWeb
