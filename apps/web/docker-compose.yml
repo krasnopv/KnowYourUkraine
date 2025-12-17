@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kyu-web
+    restart: unless-stopped
+    ports:
+      - "3201:3000"
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=production
+

@@ -1,0 +1,14 @@
+services:
+  cms:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kyu-cms
+    restart: unless-stopped
+    ports:
+      - "3202:1337"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+
