@@ -1,0 +1,45 @@
+name: Deploy Next.js Web
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/web/**'
+      - 'packages/**'
+      - '.github/workflows/deploy-web.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            echo "🚀 Deploying Next.js Web..."
+            
+            # Update code
+            cd /opt/knowYourUkraineWeb
+            git fetch origin main
+            git reset --hard origin/main
+            
+            # Create .env.local
+            cat > .env.local << ENVEOF
+            NEXT_PUBLIC_STRAPI_URL=https://knowyourua.krasnopv.com
+            STRAPI_API_TOKEN=${{ secrets.STRAPI_API_TOKEN }}
+            NEXT_PUBLIC_SUPABASE_URL=https://${{ secrets.SUPABASE_PROJECT_REF }}.supabase.co
+            NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+            ENVEOF
+            
+            # Build and restart container
+            docker compose down || true
+            docker compose up -d --build
+            
+            echo "✅ Next.js deployed on port 3201!"
