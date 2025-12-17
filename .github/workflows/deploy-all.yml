@@ -16,6 +16,7 @@ jobs:
           port: 2219
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          command_timeout: 30m
           script: |
             set -e
             echo "🚀 Full deployment starting..."
