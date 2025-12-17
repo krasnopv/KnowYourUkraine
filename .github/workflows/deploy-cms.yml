@@ -25,18 +25,12 @@ jobs:
             set -e
             echo "🚀 Deploying Strapi CMS..."
             
-            # Clone or update repo
-            if [ ! -d "/opt/knowYourUkraineCms/.git" ]; then
-              rm -rf /opt/knowYourUkraineCms/*
-              git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineCms
-            fi
-            cd /opt/knowYourUkraineCms
+            cd /opt/knowYourUkraine
             git fetch origin main
             git reset --hard origin/main
-            cd apps/cms
             
             # Create .env
-            cat > .env << ENVEOF
+            cat > apps/cms/.env << ENVEOF
             HOST=0.0.0.0
             PORT=1337
             NODE_ENV=production
@@ -59,6 +53,7 @@ jobs:
             ENVEOF
             
             # Build and restart container
+            cd apps/cms
             docker compose down || true
             docker compose up -d --build
             

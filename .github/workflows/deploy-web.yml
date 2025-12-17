@@ -26,18 +26,12 @@ jobs:
             set -e
             echo "🚀 Deploying Next.js Web..."
             
-            # Clone or update repo
-            if [ ! -d "/opt/knowYourUkraineWeb/.git" ]; then
-              rm -rf /opt/knowYourUkraineWeb/*
-              git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineWeb
-            fi
-            cd /opt/knowYourUkraineWeb
+            cd /opt/knowYourUkraine
             git fetch origin main
             git reset --hard origin/main
-            cd apps/web
             
             # Create .env.local
-            cat > .env.local << ENVEOF
+            cat > apps/web/.env.local << ENVEOF
             NEXT_PUBLIC_STRAPI_URL=https://knowyourua.krasnopv.com
             STRAPI_API_TOKEN=${{ secrets.STRAPI_API_TOKEN }}
             NEXT_PUBLIC_SUPABASE_URL=https://${{ secrets.SUPABASE_PROJECT_REF }}.supabase.co
@@ -45,6 +39,7 @@ jobs:
             ENVEOF
             
             # Build and restart container
+            cd apps/web
             docker compose down || true
             docker compose up -d --build
             

@@ -20,18 +20,18 @@ jobs:
             set -e
             echo "🚀 Full deployment starting..."
             
-            # Setup CMS folder
-            if [ ! -d "/opt/knowYourUkraineCms/.git" ]; then
-              rm -rf /opt/knowYourUkraineCms/*
-              git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineCms
+            # Clone or update repo
+            if [ ! -d "/opt/knowYourUkraine/.git" ]; then
+              rm -rf /opt/knowYourUkraine/*
+              git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraine
             fi
-            cd /opt/knowYourUkraineCms
+            cd /opt/knowYourUkraine
             git fetch origin main
             git reset --hard origin/main
-            cd apps/cms
             
             # Create CMS .env
-            cat > .env << ENVEOF
+            echo "📦 Configuring Strapi..."
+            cat > apps/cms/.env << ENVEOF
             HOST=0.0.0.0
             PORT=1337
             NODE_ENV=production
@@ -53,28 +53,23 @@ jobs:
             TRANSFER_TOKEN_SALT=${{ secrets.STRAPI_API_TOKEN_SALT }}
             ENVEOF
             
-            docker compose down || true
-            docker compose up -d --build
-            echo "✅ CMS deployed on port 3202"
-            
-            # Setup Web folder
-            if [ ! -d "/opt/knowYourUkraineWeb/.git" ]; then
-              rm -rf /opt/knowYourUkraineWeb/*
-              git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineWeb
-            fi
-            cd /opt/knowYourUkraineWeb
-            git fetch origin main
-            git reset --hard origin/main
-            cd apps/web
-            
             # Create Web .env.local
-            cat > .env.local << ENVEOF
+            echo "📦 Configuring Next.js..."
+            cat > apps/web/.env.local << ENVEOF
             NEXT_PUBLIC_STRAPI_URL=https://knowyourua.krasnopv.com
             STRAPI_API_TOKEN=${{ secrets.STRAPI_API_TOKEN }}
             NEXT_PUBLIC_SUPABASE_URL=https://${{ secrets.SUPABASE_PROJECT_REF }}.supabase.co
             NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
             ENVEOF
             
+            # Deploy CMS
+            cd /opt/knowYourUkraine/apps/cms
+            docker compose down || true
+            docker compose up -d --build
+            echo "✅ CMS deployed on port 3202"
+            
+            # Deploy Web
+            cd /opt/knowYourUkraine/apps/web
             docker compose down || true
             docker compose up -d --build
             echo "✅ Web deployed on port 3201"
