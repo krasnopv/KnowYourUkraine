@@ -2,7 +2,9 @@ export default ({ env }) => ({
   // Supabase Storage for production
   upload: {
     config: {
-      provider: env('UPLOAD_PROVIDER', 'local'),
+      provider: env('UPLOAD_PROVIDER', 'local') === 'supabase' 
+        ? 'strapi-provider-upload-supabase-storage'
+        : 'local',
       providerOptions: env('UPLOAD_PROVIDER') === 'supabase' ? {
         apiUrl: env('SUPABASE_URL'),
         apiKey: env('SUPABASE_SERVICE_KEY'),
