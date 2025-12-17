@@ -26,10 +26,15 @@ jobs:
             set -e
             echo "🚀 Deploying Next.js Web..."
             
-            # Update code
+            # Clone or update repo
+            if [ ! -d "/opt/knowYourUkraineWeb/.git" ]; then
+              rm -rf /opt/knowYourUkraineWeb
+              git clone https://github.com/${{ github.repository }}.git /opt/knowYourUkraineWeb
+            fi
             cd /opt/knowYourUkraineWeb
             git fetch origin main
             git reset --hard origin/main
+            cd apps/web
             
             # Create .env.local
             cat > .env.local << ENVEOF
