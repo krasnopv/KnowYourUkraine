@@ -7,6 +7,9 @@ services:
     restart: unless-stopped
     ports:
       - "3202:1337"
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     env_file:
       - .env
     environment:
