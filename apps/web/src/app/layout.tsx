@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <Header />
         <main className="pt-16 min-h-screen">
-          {children}
+        {children}
         </main>
         <Footer />
       </body>

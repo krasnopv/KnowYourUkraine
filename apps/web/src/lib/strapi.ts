@@ -120,3 +120,19 @@ export async function getProductCategories() {
   return fetchAPI('/product-categories');
 }
 
+// Pages
+export async function getPages(options?: FetchOptions): Promise<StrapiResponse<unknown>> {
+  return fetchAPI('/pages', {
+    populate: ['featuredImage'],
+    sort: 'publishedAt:desc',
+    ...options,
+  });
+}
+
+export async function getPage(slug: string): Promise<StrapiResponse<unknown>> {
+  return fetchAPI('/pages', {
+    populate: ['featuredImage'],
+    filters: { '[slug][$eq]': slug },
+  });
+}
+
