@@ -10,6 +10,8 @@ services:
     dns:
       - 8.8.8.8
       - 8.8.4.4
+    network_mode: bridge
+    enable_ipv6: true
     env_file:
       - .env
     environment:
