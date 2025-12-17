@@ -67,8 +67,14 @@ async function fetchAPI<T>(endpoint: string, options: FetchOptions = {}): Promis
   return res.json();
 }
 
+// Strapi response type
+interface StrapiResponse<T> {
+  data: T[];
+  meta?: { pagination?: { page: number; pageSize: number; total: number } };
+}
+
 // Blog Posts
-export async function getBlogPosts(options?: FetchOptions) {
+export async function getBlogPosts(options?: FetchOptions): Promise<StrapiResponse<unknown>> {
   return fetchAPI('/blog-posts', {
     populate: ['coverImage', 'author', 'categories'],
     sort: 'publishedAt:desc',
@@ -76,7 +82,7 @@ export async function getBlogPosts(options?: FetchOptions) {
   });
 }
 
-export async function getBlogPost(slug: string) {
+export async function getBlogPost(slug: string): Promise<StrapiResponse<unknown>> {
   return fetchAPI(`/blog-posts`, {
     populate: ['coverImage', 'author', 'categories'],
     filters: { '[slug][$eq]': slug },
@@ -106,7 +112,7 @@ export async function getPartners() {
 }
 
 // Categories
-export async function getCategories() {
+export async function getCategories(): Promise<StrapiResponse<unknown>> {
   return fetchAPI('/categories');
 }
 

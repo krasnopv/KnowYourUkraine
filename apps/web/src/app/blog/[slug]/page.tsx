@@ -53,7 +53,7 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const posts: BlogPost[] = postData?.data || [];
+  const posts = (postData?.data || []) as BlogPost[];
   const post = posts[0];
 
   if (!post) {
@@ -61,8 +61,8 @@ export default async function BlogPostPage({
   }
 
   // Get related posts (excluding current)
-  const relatedPosts: BlogPost[] = (relatedPostsData?.data || [])
-    .filter((p: BlogPost) => p.documentId !== post.documentId)
+  const relatedPosts = ((relatedPostsData?.data || []) as BlogPost[])
+    .filter((p) => p.documentId !== post.documentId)
     .slice(0, 2);
 
   const contentHtml = blocksToHtml(post.content);

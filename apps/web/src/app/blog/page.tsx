@@ -44,8 +44,8 @@ export default async function BlogPage({
     categoriesData = { data: [] };
   }
 
-  const posts: BlogPost[] = postsData.data || [];
-  const categories: Category[] = categoriesData.data || [];
+  const posts = (postsData.data || []) as BlogPost[];
+  const categories = (categoriesData.data || []) as Category[];
 
   // Filter posts by category if selected
   const filteredPosts = selectedCategory
