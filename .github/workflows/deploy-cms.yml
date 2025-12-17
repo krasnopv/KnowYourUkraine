@@ -1,11 +1,6 @@
 name: Deploy Strapi CMS
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'apps/cms/**'
-      - '.github/workflows/deploy-cms.yml'
   workflow_dispatch:
 
 jobs:
