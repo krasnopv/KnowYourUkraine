@@ -127,12 +127,9 @@ export async function getPages(options?: FetchOptions): Promise<StrapiResponse<u
     sort: 'publishedAt:desc',
     ...options,
   });
-}
-
-export async function getPage(slug: string): Promise<StrapiResponse<unknown>> {
+}export async function getPage(slug: string): Promise<StrapiResponse<unknown>> {
   return fetchAPI('/pages', {
     populate: ['featuredImage'],
     filters: { '[slug][$eq]': slug },
   });
 }
-
