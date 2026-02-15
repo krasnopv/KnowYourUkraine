@@ -19,14 +19,14 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen py-16 bg-slate-50">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Зв'яжіться з <span className="text-amber-400">нами</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            Зв'яжіться з <span className="text-blue-600">нами</span>
           </h1>
-          <p className="text-xl text-slate-400">
+          <p className="text-xl text-slate-600">
             Маєте питання? Напишіть нам!
           </p>
         </div>
@@ -34,41 +34,41 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
-            <h2 className="text-2xl font-bold text-white mb-6">Контактна інформація</h2>
-            
+            <h2 className="text-2xl font-bold text-slate-800 mb-6">Контактна інформація</h2>
+
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <span className="text-2xl">📧</span>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium">Email</h3>
-                  <a href="mailto:info@knowyourukraine.org" className="text-slate-400 hover:text-amber-400">
+                  <h3 className="text-slate-800 font-medium">Email</h3>
+                  <a href="mailto:info@knowyourukraine.org" className="text-blue-600 hover:text-blue-700">
                     info@knowyourukraine.org
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <span className="text-2xl">📍</span>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium">Адреса</h3>
-                  <p className="text-slate-400">Київ, Україна</p>
+                  <h3 className="text-slate-800 font-medium">Адреса</h3>
+                  <p className="text-slate-600">Київ, Україна</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <span className="text-2xl">🌐</span>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium">Соціальні мережі</h3>
+                  <h3 className="text-slate-800 font-medium">Соціальні мережі</h3>
                   <div className="flex gap-4 mt-2">
-                    <a href="#" className="text-slate-400 hover:text-amber-400">Facebook</a>
-                    <a href="#" className="text-slate-400 hover:text-amber-400">Instagram</a>
-                    <a href="#" className="text-slate-400 hover:text-amber-400">YouTube</a>
+                    <a href="#" className="text-blue-600 hover:text-blue-700">Facebook</a>
+                    <a href="#" className="text-blue-600 hover:text-blue-700">Instagram</a>
+                    <a href="#" className="text-blue-600 hover:text-blue-700">YouTube</a>
                   </div>
                 </div>
               </div>
@@ -76,17 +76,17 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
             {submitted ? (
               <div className="text-center py-8">
                 <div className="text-5xl mb-4">✅</div>
-                <h3 className="text-xl font-semibold text-white mb-2">Дякуємо!</h3>
-                <p className="text-slate-400">Ми отримали ваше повідомлення і скоро зв'яжемося з вами.</p>
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">Дякуємо!</h3>
+                <p className="text-slate-600">Ми отримали ваше повідомлення і скоро зв'яжемося з вами.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
                     Ім'я
                   </label>
                   <input
@@ -95,13 +95,13 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     placeholder="Ваше ім'я"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                     Email
                   </label>
                   <input
@@ -110,13 +110,13 @@ export default function ContactPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     placeholder="your@email.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-slate-300 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-2">
                     Тема
                   </label>
                   <input
@@ -125,13 +125,13 @@ export default function ContactPage() {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     placeholder="Тема повідомлення"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
                     Повідомлення
                   </label>
                   <textarea
@@ -140,14 +140,14 @@ export default function ContactPage() {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 resize-none"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
                     placeholder="Ваше повідомлення..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 font-semibold rounded-lg hover:from-amber-400 hover:to-yellow-400 transition-all"
+                  className="w-full py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
                 >
                   Надіслати
                 </button>
@@ -159,4 +159,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

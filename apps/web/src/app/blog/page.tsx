@@ -55,14 +55,14 @@ export default async function BlogPage({
     : posts;
 
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen py-16 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Наш <span className="text-amber-400">блог</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            Наш <span className="text-blue-600">блог</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Статті про українську культуру, історію та традиції
           </p>
         </div>
@@ -73,8 +73,8 @@ export default async function BlogPage({
             href="/blog"
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               !selectedCategory
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-blue-600 text-white'
+                : 'bg-white text-slate-600 border border-slate-200 hover:border-blue-600 hover:text-blue-600'
             }`}
           >
             Всі
@@ -85,8 +85,8 @@ export default async function BlogPage({
               href={`/blog?category=${cat.slug}`}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 selectedCategory === cat.slug
-                  ? 'bg-amber-500 text-slate-900'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:border-blue-600 hover:text-blue-600'
               }`}
             >
               {cat.name}
@@ -100,10 +100,10 @@ export default async function BlogPage({
             {filteredPosts.map((post) => (
               <article
                 key={post.documentId}
-                className="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-amber-500/30 transition-all group"
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition-all group"
               >
                 {/* Image */}
-                <div className="aspect-video bg-slate-700 relative overflow-hidden">
+                <div className="aspect-video bg-slate-100 relative overflow-hidden">
                   {post.coverImage?.url ? (
                     <Image
                       src={post.coverImage.url}
@@ -112,7 +112,7 @@ export default async function BlogPage({
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-amber-500/20 to-blue-500/20">
+                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
                       <span className="text-6xl">📖</span>
                     </div>
                   )}
@@ -127,7 +127,7 @@ export default async function BlogPage({
                         <Link
                           key={cat.slug}
                           href={`/blog?category=${cat.slug}`}
-                          className="text-xs font-medium px-2 py-1 bg-amber-500/20 text-amber-400 rounded hover:bg-amber-500/30"
+                          className="text-xs font-medium px-2 py-1 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200"
                         >
                           {cat.name}
                         </Link>
@@ -136,17 +136,17 @@ export default async function BlogPage({
                   )}
 
                   {/* Title */}
-                  <h2 className="text-xl font-semibold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                  <h2 className="text-xl font-semibold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h2>
 
                   {/* Excerpt */}
-                  <p className="text-slate-400 text-sm mb-4 line-clamp-2">
+                  <p className="text-slate-500 text-sm mb-4 line-clamp-2">
                     {post.excerpt}
                   </p>
 
                   {/* Meta */}
-                  <div className="flex items-center justify-between text-sm text-slate-500">
+                  <div className="flex items-center justify-between text-sm text-slate-400">
                     <span>{post.author?.name || 'Автор'}</span>
                     <time dateTime={post.publishedAt}>
                       {new Date(post.publishedAt).toLocaleDateString('uk-UA')}
@@ -158,7 +158,7 @@ export default async function BlogPage({
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-slate-400 text-lg">
+            <p className="text-slate-500 text-lg">
               {selectedCategory
                 ? 'Немає статей у цій категорії'
                 : 'Поки що немає статей'}

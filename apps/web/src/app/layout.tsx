@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <body
-        className={`${montserrat.variable} ${sourceSans.variable} font-sans antialiased bg-slate-950 text-white`}
+        className={`${montserrat.variable} ${sourceSans.variable} font-sans antialiased bg-slate-50 text-slate-800`}
       >
         <Header />
         <main className="pt-16 min-h-screen">

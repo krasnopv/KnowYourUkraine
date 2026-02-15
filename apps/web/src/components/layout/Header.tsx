@@ -16,16 +16,16 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-amber-500/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-lg flex items-center justify-center">
-              <span className="text-slate-900 font-bold text-xl">🇺🇦</span>
+            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-sm">
+              <span className="text-white font-bold text-xl">🇺🇦</span>
             </div>
-            <span className="text-xl font-bold text-white">
-              Know Your <span className="text-amber-400">Ukraine</span>
+            <span className="text-xl font-bold text-slate-800">
+              Know Your <span className="text-blue-600">Ukraine</span>
             </span>
           </Link>
 
@@ -35,7 +35,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors"
+                className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
               >
                 {item.name}
               </Link>
@@ -45,7 +45,7 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden text-slate-300 hover:text-white"
+            className="md:hidden text-slate-600 hover:text-slate-900 p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="sr-only">Меню</span>
@@ -63,12 +63,12 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-700">
+          <div className="md:hidden py-4 border-t border-slate-200 bg-white">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block py-2 text-base font-medium text-slate-300 hover:text-amber-400"
+                className="block py-2 text-base font-medium text-slate-600 hover:text-blue-600"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
@@ -80,4 +80,3 @@ export function Header() {
     </header>
   );
 }
-

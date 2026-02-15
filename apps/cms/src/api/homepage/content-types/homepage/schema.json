@@ -1,0 +1,107 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepage",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage",
+    "description": "Landing page content (EdEra-style layout). Edit hero image, titles, and sections here."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
+      "description": "Left-side hero image (e.g. geometric art or banner). Shown as placeholder until you upload."
+    },
+    "heroTitle": {
+      "type": "string",
+      "default": "ЗНАЙ СВОЮ УКРАЇНУ",
+      "description": "Main headline (e.g. ЗНАЙ СВОЮ УКРАЇНУ)"
+    },
+    "heroSubtitleLines": {
+      "type": "text",
+      "default": "онлайн-курс\nпро українську\nтрадиційну\nкультуру",
+      "description": "Lines under title, one per line"
+    },
+    "heroCtaText": {
+      "type": "string",
+      "default": "ПЕРЕЙТИ ДО КУРСУ"
+    },
+    "heroCtaLink": {
+      "type": "string",
+      "default": "/blog"
+    },
+    "aboutTitle": {
+      "type": "string",
+      "default": "Про курс"
+    },
+    "aboutHeading": {
+      "type": "string",
+      "default": "Цей онлайн-курс для тебе, якщо ти:"
+    },
+    "aboutItems": {
+      "type": "json",
+      "default": ["цікавишся усім навколо і хочеш дізнаватися більше про себе, своїх предків та Україну", "хочеш вивчати українські традиції та культуру без нудних підручників", "хочеш дізнатися, як знання про український фольклор допоможуть вразити друзів та іноземців", "сумніваєшся, що українська культура може бути цікавою й сучасною"]
+    },
+    "aboutPromise": {
+      "type": "text",
+      "default": "Обіцяємо: ти точно відкриєш для себе багато нового, а потім ще захочеш поділитися посиланням на курс із друзями."
+    },
+    "statsTitle": {
+      "type": "string",
+      "default": "Що тебе очікує в курсі?"
+    },
+    "stats": {
+      "type": "json",
+      "default": [
+        { "num": "4", "label": "святкові цикли (Різдвяний, Великодній, Купальський та Покровський)" },
+        { "num": "20", "label": "майстер-класів" },
+        { "num": "32", "label": "основні відеолекції" },
+        { "num": "∞", "label": "натхнення" }
+      ]
+    },
+    "cyclesTitle": {
+      "type": "string",
+      "default": "Всі цикли"
+    },
+    "cycles": {
+      "type": "json",
+      "default": [
+        { "name": "Різдво", "href": "/blog" },
+        { "name": "Великдень", "href": "/blog" },
+        { "name": "Купала", "href": "/blog" },
+        { "name": "Покрова", "href": "/blog" }
+      ]
+    },
+    "ctaTitle": {
+      "type": "string",
+      "default": "Зв'яжіться з нами!"
+    },
+    "ctaSubtitle": {
+      "type": "string",
+      "default": "Пишіть нам або перейдіть до курсу."
+    },
+    "ctaPrimaryText": {
+      "type": "string",
+      "default": "Написати"
+    },
+    "ctaPrimaryLink": {
+      "type": "string",
+      "default": "/contact"
+    },
+    "ctaSecondaryText": {
+      "type": "string",
+      "default": "Перейти до курсу"
+    },
+    "ctaSecondaryLink": {
+      "type": "string",
+      "default": "/blog"
+    }
+  }
+}

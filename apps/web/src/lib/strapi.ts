@@ -127,9 +127,18 @@ export async function getPages(options?: FetchOptions): Promise<StrapiResponse<u
     sort: 'publishedAt:desc',
     ...options,
   });
-}export async function getPage(slug: string): Promise<StrapiResponse<unknown>> {
+}
+
+export async function getPage(slug: string): Promise<StrapiResponse<unknown>> {
   return fetchAPI('/pages', {
     populate: ['featuredImage'],
     filters: { '[slug][$eq]': slug },
+  });
+}
+
+// Homepage (single type – EdEra-style layout, managed in Content-Manager > Homepage)
+export async function getHomepage(): Promise<{ data: Record<string, unknown> | null }> {
+  return fetchAPI('/homepage', {
+    populate: ['heroImage'],
   });
 }

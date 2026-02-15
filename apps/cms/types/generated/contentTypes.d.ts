@@ -540,6 +540,115 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
+  collectionName: 'homepage';
+  info: {
+    description: 'Landing page content (EdEra-style layout). Edit hero image, titles, and sections here.';
+    displayName: 'Homepage';
+    pluralName: 'homepages';
+    singularName: 'homepage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    aboutHeading: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u0426\u0435\u0439 \u043E\u043D\u043B\u0430\u0439\u043D-\u043A\u0443\u0440\u0441 \u0434\u043B\u044F \u0442\u0435\u0431\u0435, \u044F\u043A\u0449\u043E \u0442\u0438:'>;
+    aboutItems: Schema.Attribute.JSON &
+      Schema.Attribute.DefaultTo<
+        [
+          '\u0446\u0456\u043A\u0430\u0432\u0438\u0448\u0441\u044F \u0443\u0441\u0456\u043C \u043D\u0430\u0432\u043A\u043E\u043B\u043E \u0456 \u0445\u043E\u0447\u0435\u0448 \u0434\u0456\u0437\u043D\u0430\u0432\u0430\u0442\u0438\u0441\u044F \u0431\u0456\u043B\u044C\u0448\u0435 \u043F\u0440\u043E \u0441\u0435\u0431\u0435, \u0441\u0432\u043E\u0457\u0445 \u043F\u0440\u0435\u0434\u043A\u0456\u0432 \u0442\u0430 \u0423\u043A\u0440\u0430\u0457\u043D\u0443',
+          '\u0445\u043E\u0447\u0435\u0448 \u0432\u0438\u0432\u0447\u0430\u0442\u0438 \u0443\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0456 \u0442\u0440\u0430\u0434\u0438\u0446\u0456\u0457 \u0442\u0430 \u043A\u0443\u043B\u044C\u0442\u0443\u0440\u0443 \u0431\u0435\u0437 \u043D\u0443\u0434\u043D\u0438\u0445 \u043F\u0456\u0434\u0440\u0443\u0447\u043D\u0438\u043A\u0456\u0432',
+          '\u0445\u043E\u0447\u0435\u0448 \u0434\u0456\u0437\u043D\u0430\u0442\u0438\u0441\u044F, \u044F\u043A \u0437\u043D\u0430\u043D\u043D\u044F \u043F\u0440\u043E \u0443\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0438\u0439 \u0444\u043E\u043B\u044C\u043A\u043B\u043E\u0440 \u0434\u043E\u043F\u043E\u043C\u043E\u0436\u0443\u0442\u044C \u0432\u0440\u0430\u0437\u0438\u0442\u0438 \u0434\u0440\u0443\u0437\u0456\u0432 \u0442\u0430 \u0456\u043D\u043E\u0437\u0435\u043C\u0446\u0456\u0432',
+          '\u0441\u0443\u043C\u043D\u0456\u0432\u0430\u0454\u0448\u0441\u044F, \u0449\u043E \u0443\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430 \u043A\u0443\u043B\u044C\u0442\u0443\u0440\u0430 \u043C\u043E\u0436\u0435 \u0431\u0443\u0442\u0438 \u0446\u0456\u043A\u0430\u0432\u043E\u044E \u0439 \u0441\u0443\u0447\u0430\u0441\u043D\u043E\u044E',
+        ]
+      >;
+    aboutPromise: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'\u041E\u0431\u0456\u0446\u044F\u0454\u043C\u043E: \u0442\u0438 \u0442\u043E\u0447\u043D\u043E \u0432\u0456\u0434\u043A\u0440\u0438\u0454\u0448 \u0434\u043B\u044F \u0441\u0435\u0431\u0435 \u0431\u0430\u0433\u0430\u0442\u043E \u043D\u043E\u0432\u043E\u0433\u043E, \u0430 \u043F\u043E\u0442\u0456\u043C \u0449\u0435 \u0437\u0430\u0445\u043E\u0447\u0435\u0448 \u043F\u043E\u0434\u0456\u043B\u0438\u0442\u0438\u0441\u044F \u043F\u043E\u0441\u0438\u043B\u0430\u043D\u043D\u044F\u043C \u043D\u0430 \u043A\u0443\u0440\u0441 \u0456\u0437 \u0434\u0440\u0443\u0437\u044F\u043C\u0438.'>;
+    aboutTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u041F\u0440\u043E \u043A\u0443\u0440\u0441'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctaPrimaryLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    ctaPrimaryText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u041D\u0430\u043F\u0438\u0441\u0430\u0442\u0438'>;
+    ctaSecondaryLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/blog'>;
+    ctaSecondaryText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u041F\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043E \u043A\u0443\u0440\u0441\u0443'>;
+    ctaSubtitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u041F\u0438\u0448\u0456\u0442\u044C \u043D\u0430\u043C \u0430\u0431\u043E \u043F\u0435\u0440\u0435\u0439\u0434\u0456\u0442\u044C \u0434\u043E \u043A\u0443\u0440\u0441\u0443.'>;
+    ctaTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<"\u0417\u0432'\u044F\u0436\u0456\u0442\u044C\u0441\u044F \u0437 \u043D\u0430\u043C\u0438!">;
+    cycles: Schema.Attribute.JSON &
+      Schema.Attribute.DefaultTo<
+        [
+          {
+            href: '/blog';
+            name: '\u0420\u0456\u0437\u0434\u0432\u043E';
+          },
+          {
+            href: '/blog';
+            name: '\u0412\u0435\u043B\u0438\u043A\u0434\u0435\u043D\u044C';
+          },
+          {
+            href: '/blog';
+            name: '\u041A\u0443\u043F\u0430\u043B\u0430';
+          },
+          {
+            href: '/blog';
+            name: '\u041F\u043E\u043A\u0440\u043E\u0432\u0430';
+          },
+        ]
+      >;
+    cyclesTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u0412\u0441\u0456 \u0446\u0438\u043A\u043B\u0438'>;
+    heroCtaLink: Schema.Attribute.String & Schema.Attribute.DefaultTo<'/blog'>;
+    heroCtaText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u041F\u0415\u0420\u0415\u0419\u0422\u0418 \u0414\u041E \u041A\u0423\u0420\u0421\u0423'>;
+    heroImage: Schema.Attribute.Media<'images'>;
+    heroSubtitleLines: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'\u043E\u043D\u043B\u0430\u0439\u043D-\u043A\u0443\u0440\u0441\n\u043F\u0440\u043E \u0443\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0443\n\u0442\u0440\u0430\u0434\u0438\u0446\u0456\u0439\u043D\u0443\n\u043A\u0443\u043B\u044C\u0442\u0443\u0440\u0443'>;
+    heroTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u0417\u041D\u0410\u0419 \u0421\u0412\u041E\u042E \u0423\u041A\u0420\u0410\u0407\u041D\u0423'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::homepage.homepage'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    stats: Schema.Attribute.JSON &
+      Schema.Attribute.DefaultTo<
+        [
+          {
+            label: '\u0441\u0432\u044F\u0442\u043A\u043E\u0432\u0456 \u0446\u0438\u043A\u043B\u0438 (\u0420\u0456\u0437\u0434\u0432\u044F\u043D\u0438\u0439, \u0412\u0435\u043B\u0438\u043A\u043E\u0434\u043D\u0456\u0439, \u041A\u0443\u043F\u0430\u043B\u044C\u0441\u044C\u043A\u0438\u0439 \u0442\u0430 \u041F\u043E\u043A\u0440\u043E\u0432\u0441\u044C\u043A\u0438\u0439)';
+            num: '4';
+          },
+          {
+            label: '\u043C\u0430\u0439\u0441\u0442\u0435\u0440-\u043A\u043B\u0430\u0441\u0456\u0432';
+            num: '20';
+          },
+          {
+            label: '\u043E\u0441\u043D\u043E\u0432\u043D\u0456 \u0432\u0456\u0434\u0435\u043E\u043B\u0435\u043A\u0446\u0456\u0457';
+            num: '32';
+          },
+          {
+            label: '\u043D\u0430\u0442\u0445\u043D\u0435\u043D\u043D\u044F';
+            num: '\u221E';
+          },
+        ]
+      >;
+    statsTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u0429\u043E \u0442\u0435\u0431\u0435 \u043E\u0447\u0456\u043A\u0443\u0454 \u0432 \u043A\u0443\u0440\u0441\u0456?'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
@@ -1199,6 +1308,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::category.category': ApiCategoryCategory;
+      'api::homepage.homepage': ApiHomepageHomepage;
       'api::page.page': ApiPagePage;
       'api::partner.partner': ApiPartnerPartner;
       'api::product-category.product-category': ApiProductCategoryProductCategory;

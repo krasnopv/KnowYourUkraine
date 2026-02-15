@@ -45,14 +45,14 @@ const mockProducts = [
 
 export default function ShopPage() {
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen py-16 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Наш <span className="text-amber-400">магазин</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            Наш <span className="text-blue-600">магазин</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Брендована продукція з українською символікою
           </p>
         </div>
@@ -63,10 +63,10 @@ export default function ShopPage() {
             <Link
               key={product.id}
               href={`/shop/${product.slug}`}
-              className="group bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-amber-500/30 transition-all"
+              className="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition-all"
             >
               {/* Image */}
-              <div className="aspect-square bg-slate-700 relative overflow-hidden">
+              <div className="aspect-square bg-slate-100 relative overflow-hidden">
                 {product.images ? (
                   <Image
                     src={product.images}
@@ -75,27 +75,27 @@ export default function ShopPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-amber-500/20 to-blue-500/20">
+                  <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
                     <span className="text-6xl">🛍️</span>
                   </div>
                 )}
                 {!product.inStock && (
-                  <div className="absolute inset-0 bg-slate-900/70 flex items-center justify-center">
-                    <span className="text-white font-medium">Немає в наявності</span>
+                  <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
+                    <span className="text-slate-600 font-medium">Немає в наявності</span>
                   </div>
                 )}
               </div>
 
               {/* Content */}
               <div className="p-4">
-                <span className="text-xs text-amber-400 font-medium">
+                <span className="text-xs text-blue-600 font-medium">
                   {product.category.name}
                 </span>
-                <h2 className="text-lg font-semibold text-white mt-1 group-hover:text-amber-400 transition-colors">
+                <h2 className="text-lg font-semibold text-slate-800 mt-1 group-hover:text-blue-600 transition-colors">
                   {product.name}
                 </h2>
-                <p className="text-xl font-bold text-white mt-2">
-                  {product.price} <span className="text-sm text-slate-400">грн</span>
+                <p className="text-xl font-bold text-slate-800 mt-2">
+                  {product.price} <span className="text-sm text-slate-500">грн</span>
                 </p>
               </div>
             </Link>

@@ -37,14 +37,14 @@ const mockPartners = [
 
 export default function PartnersPage() {
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen py-16 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Наші <span className="text-amber-400">партнери</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            Наші <span className="text-blue-600">партнери</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Організації, з якими ми співпрацюємо для популяризації України
           </p>
         </div>
@@ -54,10 +54,10 @@ export default function PartnersPage() {
           {mockPartners.map((partner) => (
             <div
               key={partner.id}
-              className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50 hover:border-amber-500/30 transition-all"
+              className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition-all"
             >
               {/* Logo */}
-              <div className="w-16 h-16 bg-slate-700 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                 {partner.logo ? (
                   <img src={partner.logo} alt={partner.name} className="w-12 h-12 object-contain" />
                 ) : (
@@ -66,29 +66,29 @@ export default function PartnersPage() {
               </div>
 
               {/* Info */}
-              <h2 className="text-xl font-semibold text-white mb-2">{partner.name}</h2>
-              <p className="text-slate-400 text-sm mb-4">{partner.description}</p>
+              <h2 className="text-xl font-semibold text-slate-800 mb-2">{partner.name}</h2>
+              <p className="text-slate-600 text-sm mb-4">{partner.description}</p>
 
               {/* Website */}
               <a
                 href={partner.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-amber-400 hover:text-amber-300 text-sm font-medium"
+                className="text-blue-600 hover:text-blue-700 text-sm font-medium"
               >
                 Відвідати сайт →
               </a>
 
               {/* Project Links */}
               {partner.projectLinks && partner.projectLinks.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-slate-700">
+                <div className="mt-4 pt-4 border-t border-slate-200">
                   <h3 className="text-xs uppercase text-slate-500 font-medium mb-2">Спільні проєкти</h3>
                   <div className="flex flex-wrap gap-2">
                     {partner.projectLinks.map((link, idx) => (
                       <a
                         key={idx}
                         href={link.url}
-                        className="text-xs px-3 py-1 bg-slate-700 text-slate-300 rounded-full hover:bg-amber-500/20 hover:text-amber-400 transition-colors"
+                        className="text-xs px-3 py-1 bg-slate-100 text-slate-600 rounded-full hover:bg-blue-100 hover:text-blue-600 transition-colors"
                       >
                         {link.title}
                       </a>
@@ -101,14 +101,14 @@ export default function PartnersPage() {
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center p-8 bg-gradient-to-r from-amber-500/10 via-yellow-500/10 to-amber-500/10 rounded-2xl">
-          <h2 className="text-2xl font-bold text-white mb-4">Хочете стати партнером?</h2>
-          <p className="text-slate-400 mb-6">
+        <div className="mt-16 text-center p-8 bg-white border border-slate-200 rounded-2xl shadow-sm">
+          <h2 className="text-2xl font-bold text-slate-800 mb-4">Хочете стати партнером?</h2>
+          <p className="text-slate-600 mb-6">
             Ми відкриті до співпраці з організаціями, які поділяють наші цінності
           </p>
           <Link
             href="/contact"
-            className="inline-block px-8 py-3 bg-amber-500 text-slate-900 font-semibold rounded-lg hover:bg-amber-400 transition-colors"
+            className="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
           >
             Зв'язатися з нами
           </Link>
